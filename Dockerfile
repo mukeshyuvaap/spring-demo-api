@@ -2,6 +2,8 @@ FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY . .
 
-ENTRYPOINT ["java","-jar","app.jar"]
+RUN ./mvnw clean package -DskipTests
+
+ENTRYPOINT ["java","-jar","target/demo-0.0.1-SNAPSHOT.jar"]
